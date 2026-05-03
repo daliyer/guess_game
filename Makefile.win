@@ -1,0 +1,40 @@
+# Project: ÏîÄ¿1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = GuessNumber.o IsRight.o IsValidNum.o main.o MakeNumber.o
+LINKOBJ  = GuessNumber.o IsRight.o IsValidNum.o main.o MakeNumber.o
+LIBS     = -L"D:/dev-C++/Dev-Cpp/MinGW64/lib" -static-libgcc -m32
+INCS     = -I"D:/dev-C++/Dev-Cpp/MinGW64/include" -I"D:/dev-C++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/dev-C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/dev-C++/Dev-Cpp/MinGW64/include" -I"D:/dev-C++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/dev-C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/dev-C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = guess_game.exe
+CXXFLAGS = $(CXXINCS) -m32
+CFLAGS   = $(INCS) -m32
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+GuessNumber.o: GuessNumber.c
+	$(CC) -c GuessNumber.c -o GuessNumber.o $(CFLAGS)
+
+IsRight.o: IsRight.c
+	$(CC) -c IsRight.c -o IsRight.o $(CFLAGS)
+
+IsValidNum.o: IsValidNum.c
+	$(CC) -c IsValidNum.c -o IsValidNum.o $(CFLAGS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+MakeNumber.o: MakeNumber.c
+	$(CC) -c MakeNumber.c -o MakeNumber.o $(CFLAGS)
